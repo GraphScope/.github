@@ -1,7 +1,4 @@
-# Welcome to GraphScope Community!
-
 ![graphscope](/images/graphscope-banner.png)
-
 
 💞 Thanks for your interest in GraphScope!
 
