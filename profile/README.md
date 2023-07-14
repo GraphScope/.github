@@ -10,7 +10,7 @@
 
 In addition to GraphScope, our team has developed and open sourced several projects related to GraphScope, covering a range of areas in graph computing and data management. These include:
 
-- [alibaba/libgrape-lite](https://github.com/alibaba/libgrape-lite), a C++ library for parallel graph processing, a.k.a., GRAPE, the recipient of SIGMOD2017 Best Paper Award. 
+- [alibaba/libgrape-lite](https://github.com/alibaba/libgrape-lite), a C++ library implementaion of GRAPE, the recipient of SIGMOD2017 Best Paper Award. 
 - [v6d-io/v6d](https://github.com/v6d-io/v6d), short for vineyard (v6d), an in-memory immutable data manager. (Project under CNCF, TAG-Storage)
 - [alibaba/graphar](https://github.com/alibaba/GraphAr), short for Graph Archive, an open source, standard data file format for graph data storage and retrieval.
 
