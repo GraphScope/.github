@@ -1,4 +1,4 @@
-![graphscope](/images/graphscope-banner.png)
+![graphscope](https://github.com/graphscope/.github/blob/main/images/graphscope-banner.png)
 
 💞 Thanks for your interest in GraphScope!
 
@@ -26,4 +26,4 @@ You are warmly welcomed to join the community!
 - Reach out to us through general [Issues](https://github.com/alibaba/GraphScope/issues), [Discussions](https://github.com/alibaba/GraphScope/discussions) or via those on specific repos. 
 - For our Chinese users, stay up to date with the latest news, tech sharing, and hiring information by subscribing to our WeChat Public Account, **GraphScope**. 👇🏻
 
-<img src="/images/qr-code.jpg" width="150" />
+<img src="https://github.com/graphscope/.github/blob/main/images/qr-code.jpg" width="150" />
