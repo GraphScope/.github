@@ -1,9 +1,11 @@
 # Welcome to GraphScope Community!
 
+![graphscope](/images/graphscope-banner.png)
 
-Thanks for your interest in GraphScope!
 
-Please note that GraphScope is open sourced and maintained at:
+💞 Thanks for your interest in GraphScope!
+
+🗒️ Please note that GraphScope is open sourced and maintained at:
 
 - Repo: [https://github.com/alibaba/graphscope](https://github.com/alibaba/graphscope) (Please give us a star! 🌟)
 - Website: [https://graphscope.io](https://graphscope.io)
@@ -20,4 +22,11 @@ We are continually working on new research projects and systems to extend and im
 - [graphscope/GRIN](https://github.com/graphscope/), a proposed standard graph retrieval interface in GraphScope.
 - [graphscope/gart](https://github.com/graphscope/gart), an in-memory system extended from HTAP systems for hybrid transactional and graph analytical processing (HTGAP).
 
-Please contact us if you have any questions or suggestions. We are looking forward to hearing from you!
+## Get Involved
+You are warmly welcomed to join the community!
+
+- Join in the [Slack channel](http://slack.graphscope.io/) for discussion.
+- Reach out to us through general [Issues](https://github.com/alibaba/GraphScope/issues), [Discussions](https://github.com/alibaba/GraphScope/discussions) or via those on specific repos. 
+- For our Chinese users, stay up to date with the latest news, tech sharing, and hiring information by subscribing to our WeChat Public Account, **GraphScope**. 👇🏻
+
+<img src="/images/qr-code.jpg" width="150" />
