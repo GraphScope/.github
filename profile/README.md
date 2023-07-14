@@ -5,7 +5,7 @@
 ⚠️ Please note that GraphScope is open sourced and maintained at:
 
 - Repo: [https://github.com/alibaba/graphscope](https://github.com/alibaba/graphscope) (Please give us a star! 🌟)
-- Website: [https://graphscope.io](https://graphscope.io)
+- Resources: [Website](https://graphscope.io) | [Docs](https://graphscope.io/docs) | [Blog](https://blog.graphscope.io)
 
 
 In addition to GraphScope, our team has developed and open sourced several projects related to GraphScope, covering a range of areas in graph computing and data management. These include:
