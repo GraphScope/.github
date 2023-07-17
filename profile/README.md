@@ -12,11 +12,11 @@ In addition to GraphScope, our team has developed and open sourced several proje
 
 - [alibaba/libgrape-lite](https://github.com/alibaba/libgrape-lite), a C++ library implementaion of GRAPE, the recipient of SIGMOD2017 Best Paper Award. 
 - [v6d-io/v6d](https://github.com/v6d-io/v6d), short for vineyard (v6d), an in-memory immutable data manager. (Project under CNCF, TAG-Storage)
-- [alibaba/graphar](https://github.com/alibaba/GraphAr), short for Graph Archive, an open source, standard data file format for graph data storage and retrieval.
+- [alibaba/GraphAr](https://github.com/alibaba/GraphAr), short for Graph Archive, an open source, standard data file format for graph data storage and retrieval.
 
 We are continually working on new research projects and systems to extend and improve GraphScope, as well as graph computing ecosystem. These projects are hosted under this organization:
 
-- [graphscope/GRIN](https://github.com/graphscope/), a proposed standard graph retrieval interface in GraphScope.
+- [graphscope/GRIN](https://github.com/graphscope/GRIN), a proposed standard graph retrieval interface in GraphScope.
 - [graphscope/gart](https://github.com/graphscope/gart), an in-memory system for hybrid transactional and graph analytical processing (HTGAP).
 
 ## Get Involved
