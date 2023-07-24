@@ -1,27 +1,18 @@
 name: Docs
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-      - docs
-      - dev/docs
-    tags:
-      - "v*"
   pull_request:
     branches:
       - main
       - docs
-      - dev/docs
 
 jobs:
   build:
     runs-on: ubuntu-20.04
-    permissions:
-      issues: write
-      pull-requests: write
-      contents: write
+    # permissions:
+    #   issues: write
+    #   pull-requests: write
+    #   contents: write
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
@@ -87,40 +78,16 @@ jobs:
             bot
             ignore-semantic-pull-request
 
-    - uses: marocchino/sticky-pull-request-comment@v2
-      if: always() && (steps.pr-convention.outputs.error_message != null)
-      with:
-        header: pr-title-lint-error
-        message: |
-          Thank you for opening this pull request! 👋🏼
 
-          We require PR titles to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/),
-          which in the format of `<type>(<scope>): <description>`. Don't know how to choose a type? Refer to [here](https://gist.github.com/brianclements/841ea7bffdb01346392c#type).
-          e.g.,
-            - fix: Correct typo
-            - feat(interactive): Add support for `g.V().outE().inV()`
-            - refactor!: Drop support for Python 3.8
-            - feat(analytical): Add delta-version for PageRank
-          > Note that since pull request titles only have a single line, you have to use ! to indicate breaking changes.
+  check-docs:
+    runs-on: ubuntu-20.04
+    steps:
+    - if: ${{ build.steps.pr-regex-match.outputs.match != '' && build.steps.doc-changes.outputs.src == 'false' }}
+      run: |
+        echo " ❌ **Uh oh!** \
+            We suggest that a PR with type `feat` should has corresponding documentations. \
+            If you believe this PR could be merged without documentation, please add `yecol` as an extra reviewer for confirmation."
+        exit 1
+        
 
-          Details:
-          ```
-          ${{ steps.pr-convention.outputs.error_message }}
-          ```
-
-    # Delete a previous comment when the issue has been resolved
-    - if: ${{ steps.pr-convention.outputs.error_message == null }}
-      uses: marocchino/sticky-pull-request-comment@v2
-      with:
-        header: pr-title-lint-error
-        delete: true
-
-    - if: ${{ steps.pr-regex-match.outputs.match != '' && steps.doc-changes.outputs.src == 'false' }}
-      uses: marocchino/sticky-pull-request-comment@v2
-      with:
-        header: lack-documentation
-        message: |
-          ❌ **Uh oh!**
-          We suggest that a PR with type `feat` should has corresponding documentations.
-          If you believe this PR could be merged without documentation, please add `yecol` as an extra reviewer for confirmation.
-          Thank you!
+    
