@@ -1,10 +1,9 @@
-name: Docs
+name: PR-Check
 
 on:
   pull_request:
     branches:
       - main
-      - docs
 
 jobs:
   conventional-pr-check:
@@ -17,19 +16,6 @@ jobs:
         ref: ${{ github.event.pull_request.head.ref }}
         submodules: true
         fetch-depth: 0
-
-    - uses: dorny/paths-filter@v2
-      id: doc-changes
-      with:
-        filters: |
-          src:
-            - 'docs/**'
-
-    - uses: actions-ecosystem/action-regex-match@v2
-      id: pr-regex-match
-      with:
-        text: ${{ github.event.pull_request.title }}
-        regex: 'feat.*'
 
     - uses: amannn/action-semantic-pull-request@v5
       id: pr-convention
@@ -78,12 +64,28 @@ jobs:
     runs-on: ubuntu-20.04
     needs: conventional-pr-check
     steps:
-    - if: ${{ steps.pr-regex-match.outputs.match != '' && steps.doc-changes.outputs.src == 'false' }}
+    - uses: dorny/paths-filter@v2
+      id: doc-changes
+      with:
+        filters: |
+          src:
+            - 'docs/**'
+  
+    - uses: actions-ecosystem/action-regex-match@v2
+      id: pr-regex-match
+      with:
+        text: ${{ github.event.pull_request.title }}
+        regex: 'feat.*'
+
+    # - if: ${{ steps.pr-regex-match.outputs.match != '' && steps.doc-changes.outputs.src == 'false' }}
+    - name: debug
       run: |
-        echo " ❌ **Uh oh!** \
-            We suggest that a PR with type `feat` should has corresponding documentations. \
-            If you believe this PR could be merged without documentation, please add `yecol` as an extra reviewer for confirmation."
+        echo ${{ github.event.pull_request.title }}
+        echo "steps.pr-regex-match.outputs.match=${{ steps.pr-regex-match.outputs.match }}"
+        echo "steps.doc-changes.outputs.src=${{ steps.doc-changes.outputs.src }}"
+        echo " ❌ **Uh oh!** \n
+             We suggest that a PR with type @feat should has corresponding documentations. \n
+             If you believe this PR could be merged without documentation, please add @yecol as an extra reviewer for confirmation."
         exit 1
-        
 
     
