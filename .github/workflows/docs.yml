@@ -77,8 +77,10 @@ jobs:
         text: ${{ github.event.pull_request.title }}
         regex: 'feat.*'
 
-    - if: ${{ steps.pr-regex-match.outputs.match != '' && steps.doc-changes.outputs.src == 'false' }}
+    # - if: ${{ steps.pr-regex-match.outputs.match != '' && steps.doc-changes.outputs.src == 'false' }}
+    - name: debug
       run: |
+        echo ${{ github.event.pull_request.title }}
         echo "steps.pr-regex-match.outputs.match=${{ steps.pr-regex-match.outputs.match }}"
         echo "steps.doc-changes.outputs.src=${{ steps.doc-changes.outputs.src }}"
         echo " ❌ **Uh oh!** \n
