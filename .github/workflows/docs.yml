@@ -83,7 +83,7 @@ jobs:
         echo ${{ github.event.pull_request.title }}
         echo "steps.pr-regex-match.outputs.match=${{ steps.pr-regex-match.outputs.match }}"
         echo "steps.doc-changes.outputs.src=${{ steps.doc-changes.outputs.src }}"
-        echo " ❌ **Uh oh!** \n
+        echo " ❌ Uh oh! ❌ \n
              We suggest that a PR with type @feat should has corresponding documentations. \n
              If you believe this PR could be merged without documentation, please add @yecol as an extra reviewer for confirmation."
         exit 1
