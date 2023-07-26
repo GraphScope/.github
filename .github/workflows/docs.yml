@@ -79,13 +79,14 @@ jobs:
     needs: conventional-pr-check
     steps:
     # - if: ${{ steps.pr-regex-match.outputs.match != '' && steps.doc-changes.outputs.src == 'false' }}
-      run: |
-        echo "regex=${{ steps.pr-regex-match.outputs.match }}===""
-        echo "changed=${{ steps.doc-changes.outputs.src }}===""
-        echo " ❌ **Uh oh!** \
-            We suggest that a PR with type `feat` should has corresponding documentations. \
-            If you believe this PR could be merged without documentation, please add `yecol` as an extra reviewer for confirmation."
-        exit 1
+    - name: check docs
+        run: |
+            echo "regex=${{ steps.pr-regex-match.outputs.match }}===""
+            echo "changed=${{ steps.doc-changes.outputs.src }}===""
+            echo " ❌ **Uh oh!** \
+                We suggest that a PR with type `feat` should has corresponding documentations. \
+                If you believe this PR could be merged without documentation, please add `yecol` as an extra reviewer for confirmation."
+            exit 1
         
 
     
