@@ -18,19 +18,6 @@ jobs:
         submodules: true
         fetch-depth: 0
 
-    - uses: dorny/paths-filter@v2
-      id: doc-changes
-      with:
-        filters: |
-          src:
-            - 'docs/**'
-
-    - uses: actions-ecosystem/action-regex-match@v2
-      id: pr-regex-match
-      with:
-        text: ${{ github.event.pull_request.title }}
-        regex: 'feat.*'
-
     - uses: amannn/action-semantic-pull-request@v5
       id: pr-convention
       env:
@@ -78,14 +65,27 @@ jobs:
     runs-on: ubuntu-20.04
     needs: conventional-pr-check
     steps:
+    - uses: dorny/paths-filter@v2
+      id: doc-changes
+      with:
+        filters: |
+          src:
+            - 'docs/**'
+  
+    - uses: actions-ecosystem/action-regex-match@v2
+      id: pr-regex-match
+      with:
+        text: ${{ github.event.pull_request.title }}
+        regex: 'feat.*'
+
     # - if: ${{ steps.pr-regex-match.outputs.match != '' && steps.doc-changes.outputs.src == 'false' }}
     - name: check docs
       run: |
         echo "regex=${{ steps.pr-regex-match.outputs.match }}===""
         echo "changed=${{ steps.doc-changes.outputs.src }}===""
         echo " ❌ **Uh oh!** \
-             We suggest that a PR with type `feat` should has corresponding documentations. \
-             If you believe this PR could be merged without documentation, please add `yecol` as an extra reviewer for confirmation."
+             We suggest that a PR with type @feat should has corresponding documentations. \
+             If you believe this PR could be merged without documentation, please add @yecol as an extra reviewer for confirmation."
         exit 1
         
 
