@@ -7,7 +7,7 @@ on:
       - docs
 
 jobs:
-  build:
+  conventional-pr-check:
     runs-on: ubuntu-20.04
     # permissions:
     #   issues: write
@@ -78,11 +78,32 @@ jobs:
             bot
             ignore-semantic-pull-request
 
+    - uses: marocchino/sticky-pull-request-comment@v2
+      if: always() && (steps.pr-convention.outputs.error_message != null)
+      with:
+        header: pr-title-lint-error
+        message: |
+          Thank you for opening this pull request! 👋🏼
 
-  check-docs:
+          We require PR titles to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/),
+          which in the format of `<type>(<scope>): <description>`. Don't know how to choose a type? Refer to [here](https://gist.github.com/brianclements/841ea7bffdb01346392c#type).
+          e.g.,
+            - fix: Correct typo
+            - feat(interactive): Add support for `g.V().outE().inV()`
+            - refactor!: Drop support for Python 3.8
+            - feat(analytical): Add delta-version for PageRank
+          > Note that since pull request titles only have a single line, you have to use ! to indicate breaking changes.
+
+          Details:
+          ```
+          ${{ steps.pr-convention.outputs.error_message }}
+          ```
+
+  feature-docs-check:
     runs-on: ubuntu-20.04
+    needs: conventional-pr-check
     steps:
-    - if: ${{ build.steps.pr-regex-match.outputs.match != '' && build.steps.doc-changes.outputs.src == 'false' }}
+    - if: ${{ steps.pr-regex-match.outputs.match != '' && steps.doc-changes.outputs.src == 'false' }}
       run: |
         echo " ❌ **Uh oh!** \
             We suggest that a PR with type `feat` should has corresponding documentations. \
