@@ -19,6 +19,8 @@ We are continually working on new research projects and systems to extend and im
 - [graphscope/GRIN](https://github.com/graphscope/GRIN), a proposed standard graph retrieval interface in GraphScope.
 - [graphscope/gart](https://github.com/graphscope/gart), an in-memory system for hybrid transactional and graph analytical processing (HTGAP).
 
+You may find the full list of publications about GraphScope [here](https://graphscope.io/publications).
+
 ## Get Involved
 You are warmly welcomed to join the community!
 
