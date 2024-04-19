@@ -2,7 +2,8 @@
 
 💞 Thanks for your interest in GraphScope!
 
-⚠️ Please note that GraphScope is open sourced and maintained at:
+> [!NOTE]
+> Please note that GraphScope is open sourced and maintained at:
 
 - Repo: [https://github.com/alibaba/graphscope](https://github.com/alibaba/graphscope) (Please give us a star! 🌟)
 - Resources: [Website](https://graphscope.io) | [Docs](https://graphscope.io/docs) | [Blog](https://blog.graphscope.io)
